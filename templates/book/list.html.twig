@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Books{% endblock %}
+
+{% block content %}
+    <table id="books" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Pages</th>
+                <th>Editor</th>
+                <th>Author</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+                <tr>
+                    <td> {{ book.title }} </td>
+                    <td> {{ book.pages }} </td>
+                    <td> {{ book.getEditor().getName() }} </td>
+                    <td> {{ book.getAuthor().getName() }} </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/book/create"><button class="btn"><i class="fa fa-plus"></i> Add a book</button></a>
+{% endblock %}

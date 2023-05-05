@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Authors{% endblock %}
+
+{% block content %}
+    <table id="authors" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Nationality</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for author in authors %}
+                <tr>
+                    <td> {{ author.name }} </td>
+                    <td> {{ author.nationality }} </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/author/create"><button class="btn"><i class="fa fa-plus"></i> Add an author</button></a>
+{% endblock %}

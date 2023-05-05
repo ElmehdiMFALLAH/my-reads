@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reads{% endblock %}
+
+{% block content %}
+    <table id="my_reads" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Book</th>
+                <th>Author</th>
+                <th>Progress</th>
+                <th>Review</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for read in reads %}
+                <tr>
+                    <td> {{ read.getBook().getTitle() }} </td>
+                    <td> {{ read.getBook().getAuthor().getName() }} </td>
+                    <td> {{ read.progress }} </td>
+                    <td> {{ read.review }} </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/read/create"><button class="btn"><i class="fa fa-plus"></i> Add a read</button></a>
+{% endblock %}

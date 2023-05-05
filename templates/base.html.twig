@@ -3,8 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="{{ asset('images/favicon.png') }}">
+
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -14,6 +15,46 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+            <div id="wrapper">
+            <div class="overlay"></div>
+            
+                <!-- Sidebar -->
+                <nav class="navbar navbar-inverse fixed-top" id="sidebar-wrapper" role="navigation">
+                    <ul class="nav sidebar-nav">
+                        <div class="sidebar-header">
+                        <div class="sidebar-brand">
+                            <a href="/">My Reads</a></div></div>
+                        <li><a href="/reads">Reads</a></li>
+                        <li><a href="/books">Books</a></li>
+                        <li><a href="/authors">Authors</a></li>
+                    </ul>
+                    <a href="/logout"><button class="btn"><i class="fa fa-sign-out"></i> Logout</button></a>
+                </nav>
+                <!-- /#sidebar-wrapper -->
+
+                <!-- Page Content -->
+                <div id="page-content-wrapper">
+                    <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+                        <span class="hamb-top"></span>
+                    <span class="hamb-middle"></span>
+                    <span class="hamb-bottom"></span>
+                    </button>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-10 col-lg-10 col-lg-offset-2">
+                                {% block content %}   
+                                {% endblock %}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /#page-content-wrapper -->
+
+            </div>
+            <!-- /#wrapper -->
+        {% endblock %}
     </body>
 </html>
