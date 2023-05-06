@@ -23,7 +23,7 @@ class ReadsType extends AbstractType
                 'multiple' => false,
                 // 'expanded' => true,
             ])
-            ->add('save', SubmitType::class, ['label' => 'Add read'])
+            ->add('save', SubmitType::class, ['label' => 'Submit'])
         ;
     }
 

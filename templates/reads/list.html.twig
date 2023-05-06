@@ -1,8 +1,13 @@
 {% extends 'base.html.twig' %}
-
+{% set read_id = 0 %}
 {% block title %}Reads{% endblock %}
 
 {% block content %}
+    {% for message in app.session.flashBag.get('notice') %}
+        <div class="alert {{alertClass}}">
+            {{ message }}
+        </div>
+    {% endfor %}
     <table id="my_reads" class="table table-striped" style="width:100%">
         <thead>
             <tr>
@@ -10,6 +15,9 @@
                 <th>Author</th>
                 <th>Progress</th>
                 <th>Review</th>
+                <th></th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -18,10 +26,16 @@
                     <td> {{ read.getBook().getTitle() }} </td>
                     <td> {{ read.getBook().getAuthor().getName() }} </td>
                     <td> {{ read.progress }} </td>
-                    <td> {{ read.review }} </td>
+                    <td> {{ read.review }}</td>
+                    <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update-read-modal" id = "{{read.id}}" onclick="{% set read_id = read.id %}"><i class="fa fa-edit"></i></button></td>
+                    <td><button class="btn btn-success"><i class="fa fa-check"></i></button></td>
+                    <td><button class="btn btn-danger"><i class="fa fa-remove"></i></button></td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
-    <a href="/read/create"><button class="btn"><i class="fa fa-plus"></i> Add a read</button></a>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new-read-modal"><i class="fa fa-plus"></i> Add a read</button>
+
+{% include './reads/new-modal.html.twig' %}
+{% include './reads/update-modal.html.twig' %}
 {% endblock %}
