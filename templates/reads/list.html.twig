@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% set read_id = 0 %}
+
 {% block title %}Reads{% endblock %}
 
 {% block content %}
@@ -27,7 +27,7 @@
                     <td> {{ read.getBook().getAuthor().getName() }} </td>
                     <td> {{ read.progress }} </td>
                     <td> {{ read.review }}</td>
-                    <td><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update-read-modal" id = "{{read.id}}" onclick="{% set read_id = read.id %}"><i class="fa fa-edit"></i></button></td>
+                    <td><a class="btn btn-primary" target="_blank" href="{{path('update_read', {id: read.id})}}"><i class="fa fa-edit"></i></a></td>
                     <td><button class="btn btn-success"><i class="fa fa-check"></i></button></td>
                     <td><button class="btn btn-danger"><i class="fa fa-remove"></i></button></td>
                 </tr>
@@ -37,5 +37,4 @@
     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new-read-modal"><i class="fa fa-plus"></i> Add a read</button>
 
 {% include './reads/new-modal.html.twig' %}
-{% include './reads/update-modal.html.twig' %}
 {% endblock %}

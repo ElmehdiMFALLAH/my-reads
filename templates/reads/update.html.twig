@@ -1,15 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Update read{% endblock %}
-
-{% block body %}
-    {% block sidebar %}{% endblock %}
-    {% block content %}
-        {% for message in app.session.flashBag.get('notice') %}
-            <div class="alert {{alertClass}}">
-                {{ message }}
-            </div>
-        {% endfor %}
-        {{ form(form) }}
-    {% endblock %}
+{% block content %}
+    {% for message in app.session.flashBag.get('notice') %}
+        <div class="alert {{alertClass}}">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {{ form(form) }}
 {% endblock %}
