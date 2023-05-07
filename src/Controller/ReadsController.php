@@ -11,6 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use App\Entity\Reads;
 use App\Form\ReadsType;
+use App\Form\Type\UpdateReadType;
 use App\Repository\ReadRepository;
 use Exception;
 
@@ -59,7 +60,7 @@ class ReadsController extends AbstractController
     #[Route('/read/update/{id}', name: 'update_read')]
     public function update(Request $request, EntityManagerInterface $entityManager, Reads $read): Response
     {
-        $form = $this->createForm(ReadsType::class, $read);
+        $form = $this->createForm(UpdateReadType::class, $read);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Type;
 
 use App\Entity\Book;
 use App\Entity\Reads;
@@ -11,7 +11,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
-class ReadsType extends AbstractType
+class UpdateReadType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -22,7 +22,7 @@ class ReadsType extends AbstractType
                 'class' => Book::class,
                 'choice_label' => 'title',
                 'multiple' => false,
-                // 'expanded' => true,
+                'disabled' => true,
             ])
             ->add('save', SubmitType::class, ['label' => 'Submit'])
         ;
