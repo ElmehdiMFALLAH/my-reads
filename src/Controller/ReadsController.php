@@ -18,7 +18,7 @@ use App\Repository\ReadRepository;
 
 class ReadsController extends AbstractController
 {
-    #[Route('/read/create', name: 'create_read')]
+    #[Route('/reads/create', name: 'create_read')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $read = new Reads();
@@ -56,7 +56,7 @@ class ReadsController extends AbstractController
         ]);
     }
 
-    #[Route('/read/update/{id}', name: 'update_read')]
+    #[Route('/reads/update/{id}', name: 'update_read')]
     public function update(Request $request, EntityManagerInterface $entityManager, Reads $read): Response
     {
         $form = $this->createForm(UpdateReadType::class, $read);

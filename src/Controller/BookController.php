@@ -14,7 +14,7 @@ use App\Repository\BookRepository;
 
 class BookController extends AbstractController
 {
-    #[Route('/book/create', name: 'create_book')]
+    #[Route('/books/create', name: 'create_book')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $book = new Book();

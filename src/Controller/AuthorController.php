@@ -14,7 +14,7 @@ use App\Repository\AuthorRepository;
 
 class AuthorController extends AbstractController
 {
-    #[Route('/author/create', name: 'create_author')]
+    #[Route('/authors/create', name: 'create_author')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $author = new Author();
