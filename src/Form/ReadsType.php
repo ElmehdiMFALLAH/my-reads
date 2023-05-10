@@ -17,7 +17,7 @@ class ReadsType extends AbstractType
     {
         $builder
             ->add('progress')
-            ->add('review', TextareaType::class)
+            ->add('review', TextareaType::class, ['required' => false])
             ->add('book', EntityType::class, [
                 'class' => Book::class,
                 'choice_label' => 'title',

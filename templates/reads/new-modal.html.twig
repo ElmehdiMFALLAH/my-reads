@@ -8,7 +8,12 @@
         </div>
 
         <div class="modal-body">
-            {{ render(path('create_read')) }}
+            {% for message in app.session.flashBag.get('notice') %}
+                <div class="alert {{alertClass}}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {{ form(createForm) }}
         </div>
 
         <div class="modal-footer">

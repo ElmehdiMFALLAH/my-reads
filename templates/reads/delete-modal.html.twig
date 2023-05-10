@@ -1,0 +1,21 @@
+<div class="modal" id="delete-read-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h4 class="modal-title">Delete a read</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body" id="deleteModalBody">
+            Do you confirm deleting this read?
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" id="deleteConfirmButton" onclick="deleteRead()">Confirm</button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="refresh()">Close</button>
+        </div>
+
+    </div>
+  </div>
+</div>

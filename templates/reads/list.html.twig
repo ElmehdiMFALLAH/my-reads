@@ -29,12 +29,13 @@
                     <td> {{ read.review }}</td>
                     <td><a class="btn btn-primary" target="_blank" href="{{path('update_read', {id: read.id})}}"><i class="fa fa-edit"></i></a></td>
                     <td><button class="btn btn-success"><i class="fa fa-check"></i></button></td>
-                    <td><button class="btn btn-danger"><i class="fa fa-remove"></i></button></td>
+                    <td><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete-read-modal" onclick="storeReadId({{read.id}})"><i class="fa fa-remove"></i></button></td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new-read-modal"><i class="fa fa-plus"></i> Add a read</button>
 
-{% include './reads/new-modal.html.twig' %}
+    {% include './reads/new-modal.html.twig' %}
+    {% include './reads/delete-modal.html.twig' %}
 {% endblock %}
