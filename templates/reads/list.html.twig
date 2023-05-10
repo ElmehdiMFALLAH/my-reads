@@ -25,7 +25,7 @@
                 <tr>
                     <td> {{ read.getBook().getTitle() }} </td>
                     <td> {{ read.getBook().getAuthor().getName() }} </td>
-                    <td> {{ read.progress }} </td>
+                    <td><progress id="file" value="{{ read.progress }}" max="{{read.getBook().getPages() }}"></progress></td>
                     <td> {{ read.review }}</td>
                     <td><a class="btn btn-primary" target="_blank" href="{{path('update_read', {id: read.id})}}"><i class="fa fa-edit"></i></a></td>
                     <td><button class="btn btn-success"><i class="fa fa-check"></i></button></td>
