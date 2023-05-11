@@ -9,20 +9,23 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ReadsType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('progress')
-            ->add('review', TextareaType::class, ['required' => false])
+            ->add('progress', null, [
+                'attr' => [
+                    'placeholder' => 'Must be less than number of pages'
+                ]
+            ])
             ->add('book', EntityType::class, [
                 'class' => Book::class,
-                'choice_label' => 'title',
+                'choice_label' => function ($book) {
+                    return $book->getTitle() . ' (' . $book->getPages() . 'pages)';
+                },
                 'multiple' => false,
-                // 'expanded' => true,
             ])
             ->add('save', SubmitType::class, ['label' => 'Submit'])
         ;

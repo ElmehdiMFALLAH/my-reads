@@ -64,7 +64,16 @@ class ReadsController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $read = $form->getData();
-            
+            if ($read->getProgress() > $read->getBook()->getPages()) {
+                $this->addFlash(
+                    'notice',
+                    'The progress cannot be higher than number of pages !'
+                );
+                return $this->render('reads/update.html.twig', [
+                    'form' => $form,
+                    'alertClass' => 'alert-danger'
+                ]);
+            }
             try {
                 $entityManager->persist($read);
                 $entityManager->flush();
