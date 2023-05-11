@@ -8,4 +8,16 @@
         </div>
     {% endfor %}
     {{ form(form) }}
+<script>
+    progressInput = document.querySelector("#update_read_progress");
+    reviewInput = document.querySelector("#update_read_review");
+    progressInput.addEventListener("change", (event) => {
+        console.log(event.target.value);
+        if (event.target.value == {{ read.getBook().getPages() }}) {
+            reviewInput.disabled = false;
+        } else {
+            reviewInput.disabled = true;
+        }
+    });
+</script>
 {% endblock %}

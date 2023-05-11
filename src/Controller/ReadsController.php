@@ -71,6 +71,7 @@ class ReadsController extends AbstractController
                 );
                 return $this->render('reads/update.html.twig', [
                     'form' => $form,
+                    'read' => $read,
                     'alertClass' => 'alert-danger'
                 ]);
             }
@@ -88,17 +89,20 @@ class ReadsController extends AbstractController
                 );
                 return $this->render('reads/update.html.twig', [
                     'form' => $form,
+                    'read' => $read,
                     'alertClass' => 'alert-danger'
                 ]);
             }
 
             return $this->render('reads/update.html.twig', [
                 'form' => $form,
+                'read' => $read,
                 'alertClass' => 'alert-success'
             ]);
         }
         return $this->render('reads/update.html.twig', [
             'form' => $form,
+            'read' => $read
         ]);
     }
 
