@@ -5,15 +5,13 @@ import 'datatables.net-responsive-dt';
  
 // DataTables initialisation
 let reads = new DataTable('#my_reads', {
-    // ... configuration options
 });
 
-// DataTables initialisation
 let books = new DataTable('#books', {
-    // ... configuration options
 });
 
-// DataTables initialisation
 let authors = new DataTable('#authors', {
-    // ... configuration options
+});
+
+let users = new DataTable('#users', {
 });

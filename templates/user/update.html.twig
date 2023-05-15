@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Users{% endblock %}
+
+{% block content %}
+    <form method="POST">
+    {% for operator in operators %}
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="{{operator.id}}" name="operator[]" value="{{operator.id}}" {% if operator.id in userAllowedOperatorsIds %} checked {% endif %}>
+            <label class="form-check-label" for="check1">{{operator.name}}</label>
+        </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+{% endblock %}

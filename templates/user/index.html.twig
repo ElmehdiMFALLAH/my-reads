@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Users{% endblock %}
+
+{% block content %}
+    <table id="users" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td> {{ user.email }} </td>
+                    <td><a href="{{path('update_user', {id: user.id})}}"><button class="btn btn-primary"><i class="fa fa-gear"></i></button></a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
